@@ -245,7 +245,7 @@
 						</button>
 					</Tooltip>
 
-					{#if visionCapableModels.length > 0 && $visibleControls['chat.capture']}
+					{#if visionCapableModels.length > 0 && $visibleControls['chat.capture'] && ($user?.role === 'admin' || $user?.permissions.chat?.image_capture)}
 						<Tooltip
 							content={fileUploadCapableModels.length !== selectedModels.length
 								? $i18n.t('Model(s) do not support file upload')
@@ -408,7 +408,7 @@
 						</Tooltip>
 					{/if}
 
-					{#if $visibleControls['chat.attach_knowledge']}
+					{#if $visibleControls['chat.attach_knowledge'] && ($user?.role === 'admin' || $user?.permissions.chat?.attach_knowledge)}
 						<Tooltip
 							content={fileUploadCapableModels.length !== selectedModels.length
 								? $i18n.t('Model(s) do not support file upload')
