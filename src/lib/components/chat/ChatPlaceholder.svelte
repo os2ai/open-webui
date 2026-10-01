@@ -42,15 +42,16 @@
 	$: selectedModel = atSelectedModel ?? models[selectedModelIdx];
 	$: selectedModelName = resolveLocalizedModelName(selectedModel, $i18n.language);
 	$: selectedModelDescription = resolveLocalizedModelDescription(selectedModel, $i18n.language);
-	$: selectedSuggestionPrompts =
-		resolveLocalizedModelPromptSuggestions(atSelectedModel, $i18n.language) ??
-		resolveLocalizedModelPromptSuggestions(models[selectedModelIdx], $i18n.language) ??
-		resolveLocalizedPromptSuggestions(
-			$config?.default_prompt_suggestions,
-			$config?.default_prompt_suggestions_i18n ?? {},
-			$i18n.language,
-			(key) => $i18n.t(key)
-		);
+	$: selectedSuggestionPrompts = $config?.features?.enable_prompt_suggestions
+		? (resolveLocalizedModelPromptSuggestions(atSelectedModel, $i18n.language) ??
+			resolveLocalizedModelPromptSuggestions(models[selectedModelIdx], $i18n.language) ??
+			resolveLocalizedPromptSuggestions(
+				$config?.default_prompt_suggestions,
+				$config?.default_prompt_suggestions_i18n ?? {},
+				$i18n.language,
+				(key) => $i18n.t(key)
+			))
+		: [];
 
 	onMount(() => {
 		mounted = true;

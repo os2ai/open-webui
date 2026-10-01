@@ -249,6 +249,7 @@
 					{/if}
 				</div>
 
+				{#if $appConfig?.features?.enable_prompt_suggestions}
 				<div>
 					<button
 						class="flex w-full items-center justify-between gap-4 py-0.5 text-left"
@@ -304,6 +305,7 @@
 						</div>
 					{/if}
 				</div>
+				{/if}
 			</div>
 		{/if}
 	{/if}
