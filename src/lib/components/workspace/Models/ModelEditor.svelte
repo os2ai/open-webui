@@ -1641,6 +1641,8 @@
 								</section>
 
 								<fieldset disabled={readOnly} class="min-w-0">
+									<!-- PATCH HIDE PROMPT SUGGESTIONS WHEN DISABLED -->
+									{#if $config?.features?.enable_prompt_suggestions ?? true}
 									<section class="mt-0.5">
 										<ModelSettingsSection
 											label={$i18n.t('Prompts')}
@@ -1703,6 +1705,8 @@
 											{/if}
 										</ModelSettingsSection>
 									</section>
+									{/if}
+									<!-- /PATCH HIDE PROMPT SUGGESTIONS WHEN DISABLED -->
 
 									<hr class="my-3 border-gray-100/60 dark:border-gray-850/60" />
 

@@ -2454,6 +2454,7 @@ async def get_app_config(request: Request):
         'ui.pending_user_overlay_title',
         'ui.pending_user_overlay_content',
         'ui.watermark',
+        'ui.enable_prompt_suggestions',
     )
 
     return {
@@ -2547,6 +2548,7 @@ async def get_app_config(request: Request):
                     'enable_onedrive_integration': config.get('onedrive.enable'),
                     'enable_memories': config.get('memories.enable'),
                     'enable_subagents': config.get('subagents.enable'),
+                    'enable_prompt_suggestions': config.get('ui.enable_prompt_suggestions'),
                     **(
                         {
                             'enable_onedrive_personal': ENABLE_ONEDRIVE_PERSONAL,
